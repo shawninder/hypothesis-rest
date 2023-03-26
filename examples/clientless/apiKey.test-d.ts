@@ -4,7 +4,7 @@ import type { Annotation } from '../../src/Annotation'
 import type { Group } from '../../src/Group'
 import type { User } from '../../src/User'
 import type { Profile } from '../../src/Profile'
-import root, { type ServiceRoot } from '../../src/api/root'
+import root, { type IndexResponse } from '../../src/api/root'
 import search, { type Result } from '../../src/api/search'
 import createAnnotation from '../../src/api/createAnnotation'
 import fetchAnnotation from '../../src/api/fetchAnnotation'
@@ -37,7 +37,7 @@ import {
 export default {
   'GET /': async () => {
     // #region    root
-    expectType<ServiceRoot>(
+    expectType<IndexResponse>(
       await root(apiKeyConnectionOptions)
     )
     // #endregion root

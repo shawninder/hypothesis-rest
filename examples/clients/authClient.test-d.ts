@@ -8,7 +8,7 @@ import HypothesisRestClient, {
 // #region    imports
 import type { Group } from '../../src/Group'
 import type { User } from '../../src/User'
-import type { ServiceRoot } from '../../src/api/root'
+import type { IndexResponse } from '../../src/api/root'
 import { GROUP_ID, USER_ID, NEW_USER, QUERY, NEW_GROUP } from '../fixtures'
 import {Result} from '../../src/api/search'
 // #endregion imports
@@ -23,7 +23,7 @@ export const endpoints = {
   'GET /': async () => {
     const client = HypothesisRestClient({ authClient: '<OAUTH2_TOKEN>' })
     // #region    root
-    expectType<ServiceRoot>(
+    expectType<IndexResponse>(
       await client.root()
     )
     // #endregion root

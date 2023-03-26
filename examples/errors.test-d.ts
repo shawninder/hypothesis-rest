@@ -1,9 +1,4 @@
-import { expectType } from 'tsd'
-
-import { type ZodError } from 'zod'
-
 import HypothesisRestClient from '../src/HypothesisRest'
-import { ApiError } from '../src/hypothesis-fetch'
 import createAnnotation from '../src/api/createAnnotation'
 
 import {

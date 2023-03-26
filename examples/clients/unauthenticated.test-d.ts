@@ -11,7 +11,7 @@ import type { Annotation } from '../../src/Annotation'
 import type { Group } from '../../src/Group'
 import type { User } from '../../src/User'
 import type { Profile } from '../../src/Profile'
-import type { ServiceRoot } from '../../src/api/root'
+import type { IndexResponse } from '../../src/api/root'
 import { ANNOTATION_ID, GROUP_ID, QUERY } from '../fixtures'
 import {Result} from '../../src/api/search'
 // #endregion imports
@@ -27,7 +27,7 @@ export const endpoints = {
   'GET /': async () => {
     const client = HypothesisRestClient()
     // #region    root
-    expectType<ServiceRoot>(
+    expectType<IndexResponse>(
       await client.root()
     )
     // #endregion root

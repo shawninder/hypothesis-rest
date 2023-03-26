@@ -5,7 +5,7 @@ import type { Group } from '../../src/Group'
 import type { User } from '../../src/User'
 import type { Profile } from '../../src/Profile'
 
-import root, { type ServiceRoot } from '../../src/api/root'
+import root, { type IndexResponse } from '../../src/api/root'
 import search, { type Result } from '../../src/api/search'
 import fetchAnnotation from '../../src/api/fetchAnnotation'
 import getListOfGroups from '../../src/api/getListOfGroups'
@@ -24,7 +24,7 @@ import {
 export default {
   'GET /': async () => {
     // #region    root
-    expectType<ServiceRoot>(
+    expectType<IndexResponse>(
       await root(unauthenticatedConnectionOptions)
     )
     // #endregion root

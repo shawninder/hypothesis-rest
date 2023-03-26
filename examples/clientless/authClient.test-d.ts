@@ -2,7 +2,7 @@ import { expectType } from 'tsd'
 
 import type { Group } from '../../src/Group'
 import type { User } from '../../src/User'
-import root, { type ServiceRoot } from '../../src/api/root'
+import root, { type IndexResponse } from '../../src/api/root'
 import search, { type Result } from '../../src/api/search'
 import fetchGroup from '../../src/api/fetchGroup'
 import updateGroup from '../../src/api/updateGroup'
@@ -24,7 +24,7 @@ import {
 export default {
   'GET /': async () => {
     // #region    root
-    expectType<ServiceRoot>(
+    expectType<IndexResponse>(
       await root(authClientConnectionOptions)
     )
     // #endregion root
