@@ -1,0 +1,85 @@
+{
+  "includeVersion": true,
+  "readme": "./README.md",
+  "cleanOutputDir": true,
+  "categorizeByGroup": false,
+  "entryPointStrategy": "expand",
+  "kindSortOrder": [
+    "Function"
+  ],
+  "entryPoints": ["src"],
+  "out": "docs",
+  "requiredToBeDocumented": [
+    "Enum",
+    "EnumMember",
+    "Variable",
+    "Function",
+    "Class",
+    "Interface",
+    "Property",
+    "Method",
+    "Accessor",
+    "TypeAlias"
+  ],
+  "validation": {
+    "notExported": true,
+    "invalidLink": true
+  },
+  "navigationLinks": {
+    "View on GitHub": "https://github.com/shawninder/hypothesis-rest"
+  },
+  "sidebarLinks": {
+    "Hypothesis": "https://hypothes.is",
+    "Open Annotation W3.org community": "https://www.w3.org/community/openannotation/"
+  },
+  "visibilityFilters": {},
+  "replaceText": {
+    "inCodeCommentText": false,
+    "inCodeCommentTags": false,
+    "inIncludedFiles": true,
+    "replacements": [{
+      "pattern": "(\\.\\./)+src/HypothesisRest",
+      "replace": "hypothesis-rest"
+    }, {
+      "pattern": "(\\.\\./)+src/",
+      "replace": "hypothesis-rest/"
+    }, {
+      "pattern": "https://shawninder.github.io/hypothesis-rest/",
+      "replace": ""
+    }, {
+      "pattern": "\\[(.*)\\]\\((.*)\\.md\\)",
+      "replace": "[$1]($2.html)"
+    }
+  ]
+  },
+  "pluginPages": {
+    "pages": [{
+      "title": "Docs",
+      "children": [{
+        "title": "Getting Started",
+        "source": "getting-started.md"
+      }, {
+        "title": "Clientless Usage",
+        "source": "clientless-usage.md"
+      }, {
+        "title": "Error Handling",
+        "source": "error-handling.md"
+      }]
+    }, {
+      "title": "Examples",
+      "children": [{
+        "title": "Unauthenticated Examples",
+        "source": "examples/unauthenticated.md"
+      }, {
+        "title": "API Key Examples",
+        "source": "examples/unauthenticated.md"
+      }, {
+        "title": "Auth Client Examples",
+        "source": "examples/unauthenticated.md"
+      }, {
+        "title": "Auth Client Forwarded User Examples",
+        "source": "examples/unauthenticated.md"
+      }]
+    }]
+  }
+}

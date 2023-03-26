@@ -1,0 +1,67 @@
+{
+  "name": "hypothesis-rest",
+  "version": "0.0.1",
+  "description": "A Typescript client for the Hypothesis REST API",
+  "main": "./src/HypothesisRest.ts",
+  "types": "dist/index.d.ts",
+  "files": [
+    "README.md",
+    "LICENSE",
+    "/dist"
+  ],
+  "scripts": {
+    "dev:test": "vitest",
+    "test:integration:covered": "vitest run --coverage",
+    "test:integration": "vitest run",
+    "test:types": "tsd --typings ./dist/HypothesisRest.d.ts",
+    "test": "npm run test:types && npm run test:integration:covered",
+    "dev:docs": "npm run build:docs -- --watch",
+    "build:lib": "tsc",
+    "build:docs": "typedoc",
+    "validate:docs": "typedoc --validation",
+    "build": "npm run build:lib && npm run build:docs",
+    "clean": "rm -rf dist docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shawninder/hypothesis-rest.git"
+  },
+  "keywords": [
+    "hypothesis",
+    "annotation",
+    "api",
+    "http",
+    "rest",
+    "browser",
+    "Node.js",
+    "isomorphic"
+  ],
+  "author": "Shawn Inder <shawninder@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/shawninder/hypothesis-rest/issues"
+  },
+  "homepage": "https://github.com/shawninder/hypothesis-rest#readme",
+  "devDependencies": {
+    "@knodes/typedoc-plugin-code-blocks": "0.23.1",
+    "@knodes/typedoc-plugin-pages": "0.23.1",
+    "@types/lodash.get": "4.4.7",
+    "happy-dom": "8.9.0",
+    "lodash.get": "4.4.2",
+    "tsd": "0.26.1",
+    "typedoc": "0.23.27",
+    "typedoc-plugin-coverage": "2.0.0",
+    "typedoc-plugin-rename-defaults": "0.6.4",
+    "typedoc-plugin-replace-text": "2.1.0",
+    "typedoc-plugin-zod": "1.0.1",
+    "typescript": "4.9.5",
+    "vite": "4.2.1",
+    "vitest": "0.29.2"
+  },
+  "dependencies": {
+    "zod": "3.21.3"
+  },
+  "tsd": {
+    "directory": "examples"
+  }
+}
