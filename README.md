@@ -64,7 +64,6 @@ action | <small>Unauthenticated</small> | <small>API Key</small> | <small>Auth C
 If you intend to run the tests (`npm test`), you'll first need to create a local environment file (`cp .env.example .env.testing.local`) and add a value for each declared environment variable. This will allow you to test using the library to reach endpoints that require authentication, among other things.
 
 ## Coming Up
-- git push
 - Publish docs to github.io
 - Test Coverage
 - Bundle size analysis
@@ -76,6 +75,3 @@ If you intend to run the tests (`npm test`), you'll first need to create a local
 - v2 support
 - Add to https://web.hypothes.is/tools-plug-ins-and-integrations/
 - Optimize performance
-
-## Issues
-- See docs for Annotation type, notice `target`
