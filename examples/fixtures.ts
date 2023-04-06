@@ -24,10 +24,10 @@ export const QUERY = {}
 
 // #region    connectionOptions
 export const apiKeyHeaders = {
-  Authorization: 'Bearer ' + YOUR_API_KEY
+  Authorization: `Bearer ${YOUR_API_KEY}`
 }
 export const authClientHeaders = {
-  Authorization: 'Bearer ' + AUTH_CLIENT_TOKEN
+  Authorization: `Bearer ${AUTH_CLIENT_TOKEN}`
 }
 export const authClientForwardedUserHeaders = {
   'X-Forwarded-User': AUTH_CLIENT_FORWARDED_USER_TOKEN

@@ -4,9 +4,6 @@
   "cleanOutputDir": true,
   "categorizeByGroup": false,
   "entryPointStrategy": "expand",
-  "kindSortOrder": [
-    "Function"
-  ],
   "entryPoints": ["src"],
   "out": "docs",
   "requiredToBeDocumented": [
@@ -25,6 +22,9 @@
     "notExported": true,
     "invalidLink": true
   },
+  "kindSortOrder": [
+    "Function"
+  ],
   "navigationLinks": {
     "View on GitHub": "https://github.com/shawninder/hypothesis-rest"
   },
@@ -54,30 +54,30 @@
   },
   "pluginPages": {
     "pages": [{
-      "title": "Docs",
+      "name": "Docs",
       "children": [{
-        "title": "Getting Started",
+        "name": "Getting Started",
         "source": "getting-started.md"
       }, {
-        "title": "Clientless Usage",
+        "name": "Clientless Usage",
         "source": "clientless-usage.md"
       }, {
-        "title": "Error Handling",
+        "name": "Error Handling",
         "source": "error-handling.md"
       }]
     }, {
-      "title": "Examples",
+      "name": "Examples",
       "children": [{
-        "title": "Unauthenticated Examples",
+        "name": "Unauthenticated Examples",
         "source": "examples/unauthenticated.md"
       }, {
-        "title": "API Key Examples",
+        "name": "API Key Examples",
         "source": "examples/unauthenticated.md"
       }, {
-        "title": "Auth Client Examples",
+        "name": "Auth Client Examples",
         "source": "examples/unauthenticated.md"
       }, {
-        "title": "Auth Client Forwarded User Examples",
+        "name": "Auth Client Forwarded User Examples",
         "source": "examples/unauthenticated.md"
       }]
     }]
