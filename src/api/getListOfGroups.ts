@@ -27,7 +27,7 @@ export type GroupQuery = z.infer<typeof groupQuerySchema>
  */
 export default async function getListOfGroups (connectionOptions: Options, query?: GroupQuery): Promise<Group[]> {
   const validOptions = optionsSchema.parse(connectionOptions)
-  const validQuery = groupQuerySchema.parse(query)
+  const queryString = query ? `?${toQueryString(groupQuerySchema.parse(query))}` : ''
 
-  return await hypothesisFetch(validOptions, `groups?${toQueryString(validQuery)}`) as Group[]
+  return await hypothesisFetch(validOptions, `groups${queryString}`) as Group[]
 }
