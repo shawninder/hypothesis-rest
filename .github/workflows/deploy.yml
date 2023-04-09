@@ -1,4 +1,4 @@
-name: Deploy Typedoc Docs to GitHub Pages
+name: Deploy Typedoc Docs to GitHub Pages and Test Coverage to Coveralls
 
 on:
   push:
@@ -20,7 +20,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,6 +34,10 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Install dependencies
         run: npm ci
+      - name: Test
+        run: npm test
+      - name: Report Coveralls
+        uses: coverallsapp/github-action@v2
       - name: Build docs with Typedoc
         run: npm run build:docs
       - name: Upload artifact
@@ -41,8 +45,7 @@ jobs:
         with:
           path: ./docs
 
-  # Deployment job
-  deploy:
+  deploy-docs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
