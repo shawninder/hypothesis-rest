@@ -36,12 +36,15 @@ jobs:
         run: npm ci
       - name: Build lib and docs
         run: npm run build
-      - name: Upload artifact
+      - name: Upload Lib Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: lib
+          path: ./dist
+      - name: Upload Docs Artifacts
         uses: actions/upload-pages-artifact@v1
         with:
-          path: |
-            ./dist
-            ./docs
+          path: ./docs
 
   test:
     runs-on: ubuntu-latest
@@ -54,6 +57,10 @@ jobs:
       #   with:
       #     node-version: "18"
       #     cache: npm
+      - name: Download Built Lib
+        uses: actions/download-artifact@v3
+        with:
+          name: lib
       - name: Test
         run: npm test
       - name: Report Coveralls
