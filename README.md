@@ -12,7 +12,7 @@ Catch mistakes as you type and minimize the need for actually making real API ca
 
 ## [Get Started](https://shawninder.github.io/hypothesis-rest/pages/getting-started.html)
 ## [Examples](https://shawninder.github.io/hypothesis-rest/pages/examples.html)
-
+## [Documentation](https://shawninder.github.io/hypothesis-rest/)
 ## Runtime Requirements: [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 This code uses `fetch` so it will run as-is in modern browsers and Node.js 18 or later (the [`fetch` Browser compatibility table](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API#browser_compatibility) on MDN also mentions Node.js 18).
 
@@ -75,3 +75,4 @@ If you intend to run the tests (`npm test`), you'll first need to create a local
 - v2 support
 - Add to https://web.hypothes.is/tools-plug-ins-and-integrations/
 - Optimize performance
+- Local Test API Instance which can provide things like Auth Client tokens and avoid things like email notifications when an annotation is flagged.
