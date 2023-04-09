@@ -100,7 +100,7 @@ export default async function hypothesisFetch (
   const validOptions = optionsSchema.parse(connectionOptions)
   const validEndpoint = z.string().parse(endpoint)
   const { apiUrl, headers } = validOptions
-  if (fetchOptions.method === 'POST', fetchOptions.method === 'PATCH') {
+  if (fetchOptions.method === 'POST' || fetchOptions.method === 'PATCH') {
     if (fetchOptions.body && !validOptions.headers['Content-Length']) {
       validOptions.headers['Content-Length'] = fetchOptions.body.toString().length.toString()
     }
