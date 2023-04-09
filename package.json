@@ -46,6 +46,7 @@
     "@knodes/typedoc-plugin-code-blocks": "0.23.2",
     "@knodes/typedoc-plugin-pages": "0.23.2",
     "@types/lodash.get": "4.4.7",
+    "@vitest/coverage-c8": "0.29.8",
     "happy-dom": "9.1.7",
     "lodash.get": "4.4.2",
     "tsd": "0.28.1",
