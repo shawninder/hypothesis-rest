@@ -2,7 +2,8 @@ name: Deploy Typedoc Docs to GitHub Pages and Test Coverage to Coveralls
 
 on:
   push:
-    branches: [$default-branch]
+    branches:
+      - main
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
