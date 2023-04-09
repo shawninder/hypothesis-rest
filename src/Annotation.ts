@@ -12,7 +12,7 @@ import { z } from "zod"
 export const fragmentSelectorSchema = z.object({
   type: z.literal('FragmentSelector'),
   value: z.string(),
-  conformsTo: z.string()
+  conformsTo: z.string().optional()
 })
 /**
  * @see FragmentSelector: https://www.w3.org/TR/annotation-model/#fragment-selector
