@@ -1,6 +1,6 @@
 {
   "name": "hypothesis-rest",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Typescript client for the Hypothesis REST API",
   "main": "./src/HypothesisRest.ts",
   "types": "dist/index.d.ts",
