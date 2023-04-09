@@ -1,3 +1,4 @@
+import { describe, test, expect } from 'vitest'
 import z from 'zod'
 
 import testEndpoint from '../../tests/testEndpoint'
@@ -5,7 +6,7 @@ import testEndpoint from '../../tests/testEndpoint'
 import root, { indexResponseSchema } from './root'
 import search, { resultSchema } from './search'
 
-import { annotationSchema, type Annotation } from '../Annotation'
+import { annotationSchema } from '../Annotation'
 import createAnnotation from './createAnnotation'
 import fetchAnnotation from './fetchAnnotation'
 import updateAnnotation from './updateAnnotation'
@@ -14,7 +15,7 @@ import flagAnnotation from './flagAnnotation'
 import hideAnnotation from './hideAnnotation'
 import showAnnotation from './showAnnotation'
 
-import { groupSchema, type Group } from '../Group'
+import { groupSchema } from '../Group'
 import getListOfGroups from './getListOfGroups'
 import createGroup from './createGroup'
 import fetchGroup from './fetchGroup'
@@ -27,7 +28,6 @@ import removeGroupMember from './removeGroupMember'
 import fetchProfile from './fetchProfile'
 import fetchUsersGroups from './fetchUsersGroups'
 
-import { type User } from '../User'
 import createUser from './createUser'
 import fetchUser from './fetchUser'
 import updateUser from './updateUser'
@@ -39,10 +39,14 @@ import {
   NEW_GROUP,
   USER_ID,
   NEW_USER,
-  GROUP_ANNOTATION_ID
+  GROUP_ANNOTATION_ID,
+  apiKeyConnectionOptions,
+  YOUR_API_KEY,
+  AUTH_CLIENT_TOKEN
 } from '../../examples/fixtures'
 import { userSchema } from '../User'
 import { profileSchema } from '../Profile'
+import HypothesisRest from '../HypothesisRest'
 
 
 testEndpoint(
@@ -68,40 +72,53 @@ testEndpoint(
   true, true, false, false
 )
 
-const createAnnotationResponses = testEndpoint(
+testEndpoint(
   createAnnotation,
   'annotations.createAnnotation',
   annotationSchema,
   [NEW_ANNOTATION],
   false, true, false, false
 )
-if (!createAnnotationResponses.clientless.apiKey) {
-  console.error('Cannot test `updateAnnotation` or `deleteAnnotation` until `createAnnotation` tests pass')
-} else {
-  const annotationId = (createAnnotationResponses.clientless.apiKey as Annotation).id
+
+describe('Creating new annotations with which to test `updateAnnotation`, `flagAnnotation` and `deleteAnnotation`…', async () => {
+  const client = HypothesisRest({ apiKey: YOUR_API_KEY })
+  const [clientMadeAnnotation, clientlessMadeAnnotation] = [
+    await createAnnotation(apiKeyConnectionOptions, NEW_ANNOTATION),
+    await client.annotations.createAnnotation(NEW_ANNOTATION)
+  ]
+  const clientMadeAnnotationId = clientMadeAnnotation.id
+  const clientlessMadeAnnotationId = clientlessMadeAnnotation.id
   testEndpoint(
     updateAnnotation,
     'annotations.updateAnnotation',
     annotationSchema,
-    [annotationId, NEW_ANNOTATION],
+    {
+      clientless: [clientlessMadeAnnotationId, NEW_ANNOTATION],
+      usingClient: [clientMadeAnnotationId, NEW_ANNOTATION]
+    },
     false, true, false, false
   )
   testEndpoint(
     flagAnnotation,
     'annotations.flagAnnotation',
     z.boolean(),
-    [annotationId],
+    {
+      clientless: [clientlessMadeAnnotationId],
+      usingClient: [clientMadeAnnotationId]
+    },
     false, true, false, false
   )
   testEndpoint(
     deleteAnnotation,
     'annotations.deleteAnnotation',
     z.string(),
-    [annotationId],
+    {
+      clientless: [clientlessMadeAnnotationId],
+      usingClient: [clientMadeAnnotationId]
+    },
     false, true, false, false
   )
-}
-
+})
 
 testEndpoint(
   hideAnnotation,
@@ -132,7 +149,7 @@ testEndpoint(
   [PUBLIC_GROUP_ID],
   true, true, true, false
 )
-const createGroupResponses = testEndpoint(
+testEndpoint(
   createGroup,
   'groups.createGroup',
   groupSchema,
@@ -140,25 +157,24 @@ const createGroupResponses = testEndpoint(
   false, true, false, true
 )
 
-if (!createGroupResponses.clientless.apiKey) {
-  console.error('Cannot test `updateGroup` or `createOrUpdateGroup` until `createGroup` tests pass')
-} else {
-  const groupId = (createGroupResponses.clientless.apiKey as Group).id
+describe('Creating a new group to test `updateGroup` and `createOrUpdateGroup`…', async () => {
+  const newGroup = await createGroup(apiKeyConnectionOptions, NEW_GROUP)
+  const newGroupId = newGroup.id
   testEndpoint(
     updateGroup,
     'groups.updateGroup',
     groupSchema,
-    [groupId, NEW_GROUP],
+    [newGroupId, NEW_GROUP],
     false, true, true, true
   )
   testEndpoint(
     createOrUpdateGroup,
     'groups.createOrUpdateGroup',
     groupSchema,
-    [groupId, NEW_GROUP],
+    [newGroupId, NEW_GROUP],
     false, true, false, true
   )
-}
+})
 
 testEndpoint(
   getGroupMembers,
@@ -205,7 +221,7 @@ testEndpoint(
   false, false, true, false
 )
 
-const createUserResponses = testEndpoint(
+testEndpoint(
   createUser,
   'users.createUser',
   userSchema,
@@ -213,14 +229,15 @@ const createUserResponses = testEndpoint(
   false, false, true, false
 )
 
-if (!createUserResponses.clientless.authClient) {
-  console.error('Cannot test `updateUser` until `createUser` tests pass')
-} else {
+describe.skip('Creating new user to test `updateUser`…', async () => {
+  const client = HypothesisRest({ authClient: AUTH_CLIENT_TOKEN })
+  const newUser = await client.users.createUser(NEW_USER)
+  const newUsername = newUser.username
   testEndpoint(
     updateUser,
     'users.updateUser',
     userSchema,
-    [(createUserResponses.clientless.authClient as User).username, NEW_USER],
+    [newUsername, NEW_USER],
     false, false, true, false
   )
-}
+})
