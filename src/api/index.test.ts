@@ -1,4 +1,4 @@
-import { describe, test, expect } from 'vitest'
+import { describe } from 'vitest'
 import z from 'zod'
 
 import testEndpoint from '../../tests/testEndpoint'
@@ -30,13 +30,14 @@ import fetchUsersGroups from './fetchUsersGroups'
 
 import createUser from './createUser'
 import fetchUser from './fetchUser'
-import updateUser from './updateUser'
+// import updateUser from './updateUser'
 import {
   ANNOTATION_ID,
   NEW_ANNOTATION,
   PUBLIC_GROUP_ID,
   GROUP_ID,
   NEW_GROUP,
+  NEW_GROUP_B,
   USER_ID,
   NEW_USER,
   GROUP_ANNOTATION_ID,
@@ -153,7 +154,10 @@ testEndpoint(
   createGroup,
   'groups.createGroup',
   groupSchema,
-  [NEW_GROUP],
+  {
+    clientless: [NEW_GROUP],
+    usingClient: [NEW_GROUP_B]
+  },
   false, true, false, true
 )
 
@@ -229,15 +233,15 @@ testEndpoint(
   false, false, true, false
 )
 
-describe.skip('Creating new user to test `updateUser`…', async () => {
-  const client = HypothesisRest({ authClient: AUTH_CLIENT_TOKEN })
-  const newUser = await client.users.createUser(NEW_USER)
-  const newUsername = newUser.username
-  testEndpoint(
-    updateUser,
-    'users.updateUser',
-    userSchema,
-    [newUsername, NEW_USER],
-    false, false, true, false
-  )
-})
+// describe.skip('Creating new user to test `updateUser`…', async () => {
+//   const client = HypothesisRest({ authClient: AUTH_CLIENT_TOKEN })
+//   const newUser = await client.users.createUser(NEW_USER)
+//   const newUsername = newUser.username
+//   testEndpoint(
+//     updateUser,
+//     'users.updateUser',
+//     userSchema,
+//     [newUsername, NEW_USER],
+//     false, false, true, false
+//   )
+// })

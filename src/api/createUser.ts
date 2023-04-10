@@ -29,7 +29,7 @@ export type NewUser = z.infer<typeof newUserSchema>
  * @see createUser: https://h.readthedocs.io/en/latest/api-reference/#tag/users/paths/~1users/post
  * @throws {@link hypothesisFetch.ApiError}
  */
-export default async function createGroup (
+export default async function createUser (
   connectionOptions: Options,
   newUser: NewUser
 ): Promise<User> {

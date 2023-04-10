@@ -12,23 +12,13 @@ export const GROUP_ID = process.env.VITE_HYPOTHESIS_GROUP_ID || ''
 export const GROUP_ANNOTATION_ID = process.env.VITE_HYPOTHESIS_GROUP_ANNOTATION_ID || ''
 export const USER_ID = process.env.VITE_HYPOTHESIS_USER_ID || ''
 
-console.log('ENV', {
-  apiKeyLength: YOUR_API_KEY.length,
-  authClientTokenLength: AUTH_CLIENT_TOKEN.length,
-  authClientForwardedUserTokenLength: AUTH_CLIENT_FORWARDED_USER_TOKEN.length,
-  ANNOTATION_ID,
-  PUBLIC_GROUP_ID,
-  GROUP_ID,
-  GROUP_ANNOTATION_ID,
-  USER_ID
-})
-
 export const NEW_ANNOTATION = {
   uri: 'http://example.com',
   group: 'xjG1r82J',
   text: Math.random().toString()
 }
 export const NEW_GROUP = { name: Math.random().toString() }
+export const NEW_GROUP_B = { name: Math.random().toString() }
 export const NEW_USER = { }
 
 export const QUERY = {}
