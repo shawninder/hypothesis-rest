@@ -1,6 +1,7 @@
 # Hypothesis-REST
 
 WORK-IN-PROGRESS
+[![Coverage Status](https://coveralls.io/repos/github/shawninder/hypothesis-rest/badge.svg?branch=main)](https://coveralls.io/github/shawninder/hypothesis-rest?branch=main)
 
 A Typescript client for [the Hypothesis REST API](https://h.readthedocs.io/en/latest/api/) for Node.js and the browser
 

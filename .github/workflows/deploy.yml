@@ -81,7 +81,9 @@ jobs:
           VITE_HYPOTHESIS_USER_ID: ${{ vars.VITE_HYPOTHESIS_USER_ID }}
 
       - name: Report Coveralls
-        uses: coverallsapp/github-action@v2
+        run: curl -sL https://coveralls.io/coveralls-linux.tar.gz | tar -xz && ./coveralls
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   deploy-docs:
     environment:
