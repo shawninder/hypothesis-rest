@@ -69,6 +69,17 @@ jobs:
           path: ./dist
       - name: Test
         run: npm test
+        env:
+          VITE_HYPOTHESIS_API_KEY: ${{ secrets.VITE_HYPOTHESIS_API_KEY }}
+          # VITE_HYPOTHESIS_AUTH_CLIENT: ${{ secrets.VITE_HYPOTHESIS_AUTH_CLIENT }}
+          # VITE_HYPOTHESIS_AUTH_CLIENT_FORWARDED_USER: ${{ secrets.VITE_HYPOTHESIS_AUTH_CLIENT_FORWARDED_USER }}
+          # VITE_HYPOTHESIS_CLIENT_ID: ${{ secrets.VITE_HYPOTHESIS_CLIENT_ID }}
+          # VITE_HYPOTHESIS_CLIENT_SECRET: ${{ secrets.VITE_HYPOTHESIS_CLIENT_SECRET }}
+          VITE_HYPOTHESIS_ANNOTATION_ID: ${{ vars.VITE_HYPOTHESIS_ANNOTATION_ID }}
+          VITE_HYPOTHESIS_GROUP_ID: ${{ vars.VITE_HYPOTHESIS_GROUP_ID }}
+          VITE_HYPOTHESIS_GROUP_ANNOTATION_ID: ${{ vars.VITE_HYPOTHESIS_GROUP_ANNOTATION_ID }}
+          VITE_HYPOTHESIS_USER_ID: ${{ vars.VITE_HYPOTHESIS_USER_ID }}
+
       - name: Report Coveralls
         uses: coverallsapp/github-action@v2
 
