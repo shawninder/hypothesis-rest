@@ -198,7 +198,7 @@ export const annotationSchema = z.object({
   target: z.array(z.object({
     source: z.string().optional(),
     selector: z.array(selectorSchema).optional()
-  }).strict()),
+  }).strict()).optional(),
   links: z.any(),
   hidden: z.boolean(),
   flagged: z.boolean(),

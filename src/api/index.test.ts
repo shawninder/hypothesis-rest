@@ -42,8 +42,8 @@ import {
   NEW_USER,
   GROUP_ANNOTATION_ID,
   apiKeyConnectionOptions,
-  YOUR_API_KEY,
-  AUTH_CLIENT_TOKEN
+  YOUR_API_KEY
+  // AUTH_CLIENT_TOKEN
 } from '../../examples/fixtures'
 import { userSchema } from '../User'
 import { profileSchema } from '../Profile'
