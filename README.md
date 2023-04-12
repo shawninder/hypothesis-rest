@@ -1,7 +1,14 @@
 # Hypothesis-REST
 
 WORK-IN-PROGRESS
-[![Coverage Status](https://coveralls.io/repos/github/shawninder/hypothesis-rest/badge.svg?branch=main)](https://coveralls.io/github/shawninder/hypothesis-rest?branch=main)
+![License](https://img.shields.io/github/license/shawninder/hypothesis-rest)
+[![npm version](https://img.shields.io/npm/v/hypothesis-rest?logo=npm)](https://npmjs.com/package/hypothesis-rest)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/hypothesis-rest?label=npm%20bundle%20size&logo=npm)
+![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/shawninder/hypothesis-rest?logo=libraries.io)
+![Deployment workflow](https://github.com/shawninder/hypothesis-rest/actions/workflows/deploy.yml/badge.svg)
+[![Docs deployment](https://img.shields.io/github/deployments/shawninder/hypothesis-rest/github-pages?label=Docs%20deployment%20on%20GitHub%20pages&logo=github)](https://shawninder.github.io/hypothesis-rest)
+[![Coverage Status](https://img.shields.io/coverallsCoverage/github/shawninder/hypothesis-rest?logo=coveralls&label=test%20coverage)](https://coveralls.io/github/shawninder/hypothesis-rest?branch=main)
+[![Buy me a Coffee button](https://img.shields.io/badge/buy%20me%20a%20coffee-donate-yellow.svg?logo=buymeacoffee)](https://buymeacoffee.com/shawninder)
 
 A Typescript client for [the Hypothesis REST API](https://h.readthedocs.io/en/latest/api/) for Node.js and the browser
 
